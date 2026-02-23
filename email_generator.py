@@ -291,7 +291,7 @@ class EmailGenerator:
             <div class="field" style="margin-top: 15px;">
                 <a href="https://tsdr.uspto.gov/#caseNumber={sn}&caseSearchType=US_APPLICATION&caseType=DEFAULT&searchType=statusSearch" 
                    target="_blank" style="color: #003366; text-decoration: none; font-weight: bold;">
-                   → View on USPTO TSDR
+                   View on USPTO TSDR
                 </a>
             </div>
         """
@@ -358,7 +358,7 @@ class EmailGenerator:
                 server.login(self.sender_email, self.sender_password)
                 server.send_message(msg)
             
-            print(f"✓ Email sent successfully to {len(self.recipient_emails)} recipient(s)")
+            print(f"Email sent successfully to {len(self.recipient_emails)} recipient(s)")
             return True
             
         except Exception as e:
