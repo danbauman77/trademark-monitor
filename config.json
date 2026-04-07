@@ -1,99 +1,36 @@
+// Config / Algebra
+
 {
-  "uspto_api_key": "",
-  "days_back": 1,
-  "max_results_per_email": 100,
-  "email": {
-    "smtp_server": "smtp.gmail.com",
-    "smtp_port": 587,
-    "sender_email": "",
-    "sender_password": "",
-    "recipient_emails": [
-      ""
-    ]
-  },
-  "filters": {
-    "action_keys": [],
-    "owner_states": [
-      "AL",
-      "AK",
-      "AZ",
-      "AR",
-      "CA",
-      "CO",
-      "CT",
-      "DE",
-      "FL",
-      "GA",
-      "HI",
-      "ID",
-      "IL",
-      "IN",
-      "IA",
-      "KS",
-      "KY",
-      "LA",
-      "ME",
-      "MD",
-      "MA",
-      "MI",
-      "MN",
-      "MS",
-      "MO",
-      "MT",
-      "NE",
-      "NV",
-      "NH",
-      "NJ",
-      "NM",
-      "NY",
-      "NC",
-      "ND",
-      "OH",
-      "OK",
-      "OR",
-      "PA",
-      "RI",
-      "SC",
-      "SD",
-      "TN",
-      "TX",
-      "UT",
-      "VT",
-      "VA",
-      "WA",
-      "WV",
-      "WI",
-      "WY",
-      "DC",
-      "GU",
-      "PR",
-      "VI",
-      "AS",
-      "MP",
-      "US"
-    ],
-    "legal_entity_codes": [
-      "02",
-      "03",
-      "04",
-      "05",
-      "06",
-      "07",
-      "08",
-      "09",
-      "10",
-      "11",
-      "12",
-      "13",
-      "14",
-      "15",
-      "16",
-      "17",
-      "18",
-      "19",
-      "98",
-      "99"
-    ],
+  "monitor_name": "Trademark Monitor",
+
+  // --- paths ---
+  "data_directory": "data",
+  "state_file": "state.json",
+  // "log_file": "",
+  // "baseline_file": "",
+
+  // --- file cleanup ---
+  "keep_files": 2,
+  "cleanup_patterns": ["matches_*.json"],
+
+  // --- http ---
+  "request_timeout": 30,
+
+  // --- email ---
+  "smtp_server": "smtp.gmail.com",
+  "smtp_port": 587,
+  "sender_email": "",
+  "sender_password": "",
+  "recipient_emails": [""],
+  "email_subject_prefix": "Trademark Alert:",
+
+  // --- trademark ---
+  "trademark_api_key": "",
+  "trademark_batch_size": 20,
+  "trademark_max_empty_batches": 3,
+  "trademark_max_results_per_email": 100,
+  "trademark_rate_limit_delay": null,
+  "trademark_filters": {
     "keyword_mode": "any",
     "keywords": {
       "mark_identification": [],
@@ -121,12 +58,40 @@
         "*board of curator*"
       ],
       "email_addresses": ["*.edu*"]
-    }
+    },
+    "action_keys": [],
+    "owner_states": [
+      "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",
+      "HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+      "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ",
+      "NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
+      "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY",
+      "DC","GU","PR","VI","AS","MP","US"
+    ],
+    "legal_entity_codes": [
+      "02","03","04","05","06","07","08","09","10",
+      "11","12","13","14","15","16","17","18","19","98","99"
+    ]
   },
-  "data_directory": "data",
-  "scheduler": {
-    "enabled": true,
-    "run_times": ["06:00", "12:00", "18:00", "23:00"],
-    "run_on_start": true
-  }
+
+  // --- scheduler ---
+  "scheduler_enabled": true,
+  "scheduler_run_times": ["06:00", "12:00", "18:00", "23:00"],
+  "scheduler_run_on_start": true,
+
+  // --- unused other parameters ---
+  // "tophat_base_url": "https://www.askebsa.dol.gov/tophatplansearch/Home/Search",
+  // "tophat_records_per_page": 100,
+  // "tophat_propublica_delay": 0.5,
+  // "tophat_reference_file": "",
+  // "reginfo_rins": [],
+  // "reginfo_agenda_url": "https://www.reginfo.gov/public/do/eAgendaXmlReport",
+  // "csv_file_url": "",
+  // "csv_filename": "",
+  // "csv_credentials_file": "credentials.json",
+  // "csv_spreadsheet_id": "",
+  // "csv_sheet_name": "importXML",
+  // "csv_encoding": "utf-8"
+
+  "_end": true
 }

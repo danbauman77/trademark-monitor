@@ -6,6 +6,8 @@ Python script to regularly monitor USPTO trademark applications with keyword fil
 ## Install
 
 ```bash
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -16,20 +18,17 @@ Edit `config.json`:
 
 ```json
 {
-  "uspto_api_key": "your_api_key_here",
-  "max_results_per_email": 100,
-  "email": {
-    "smtp_server": "smtp.gmail.com",
-    "smtp_port": 587,
-    "sender_email": "your_email@gmail.com",
-    "sender_password": "your_app_password",
-    "recipient_emails": ["recipient@example.com"]
-  },
-  "filters": {
+  "trademark_api_key": "your_api_key_here",
+  "trademark_max_results_per_email": 100,
+  "smtp_server": "smtp.gmail.com",
+  "smtp_port": 587,
+  "sender_email": "your_email@gmail.com",
+  "sender_password": "your_app_password",
+  "recipient_emails": ["recipient@example.com"],
+  "trademark_filters": {
 
     "See below"
 
-    }
   }
 }
 ```
@@ -178,12 +177,14 @@ python trademark_monitor.py
 
 ### State Reset
 
-To start over from a specific serial number:
+To start over from a specific serial number, edit `state.json`:
 
-```python
-from state_manager import StateManager
-sm = StateManager()
-sm.reset_state(start_sn=88000000)  # Start from Serial Number 88000000
+```json
+{
+  "last_processed_sn": 88000000,
+  "total_matches": 0,
+  "total_batches_processed": 0
+}
 ```
 
 
